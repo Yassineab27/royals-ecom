@@ -1,0 +1,133 @@
+:root {
+  --color-main: teal;
+  --color-dark: #343a40;
+  --color-light: #f4f4f4;
+  --color-grey: #ccc;
+  --color-danger: #dc3545;
+  --color-success: #28a745;
+  --color-warning: #d6ba1c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+}
+
+a {
+  color: var(--color-main);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+}
+/* ======================================================================= */
+/* HOME PAGE */
+/* ======================================================================= */
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 2rem;
+  grid-gap: 1rem;
+}
+
+.menu-secondary {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 1rem;
+  grid-gap: 1rem;
+}
+
+.menu-item {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.486);
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.486);
+
+    .background-img {
+      transform: scale(1.1);
+      transition: transform 4s ease;
+    }
+
+    .content {
+      opacity: 0.9;
+      border-radius: 15px;
+      transition: all 1s ease;
+    }
+  }
+
+  .background-img {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 90px;
+    padding: 0 25px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-dark);
+    position: absolute;
+
+    background: var(--color-main);
+    opacity: 0.8;
+
+    .title {
+      font-weight: bold;
+      margin-bottom: 6px;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .subtitle {
+      font-weight: lighter;
+      font-size: 16px;
+      color: var(--color-grey);
+    }
+  }
+}
+
+.large-img {
+  height: 380px;
+}
