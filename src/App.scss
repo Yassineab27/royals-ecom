@@ -1,11 +1,10 @@
 :root {
-  --color-main: teal;
+  --color-main: #d6ba1c;
   --color-dark: #343a40;
   --color-light: #f4f4f4;
   --color-grey: #ccc;
   --color-danger: #dc3545;
   --color-success: #28a745;
-  --color-warning: #d6ba1c;
 }
 
 * {
@@ -123,7 +122,11 @@ img {
     .subtitle {
       font-weight: lighter;
       font-size: 16px;
-      color: var(--color-grey);
+      color: #000;
+
+      &:hover {
+        text-shadow: 2px 2px 4px #fff;
+      }
     }
   }
 }
