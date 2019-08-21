@@ -14,6 +14,7 @@ const Collection = props => {
             <CollectionItem key={item.id} item={item} />
           ))}
       </div>
+      <div className="big-underline" />
     </div>
   );
 };

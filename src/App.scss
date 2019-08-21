@@ -39,6 +39,25 @@ img {
   margin: auto;
   overflow: hidden;
 }
+
+.small-underline {
+  height: 2px;
+  width: 45px;
+  margin: auto;
+  background: var(--color-main);
+  margin-bottom: 0.5rem;
+}
+
+.big-underline {
+  height: 1px;
+  width: 70%;
+  margin: 3.5rem auto 2rem auto;
+  background: var(--color-main);
+}
+
+.text-center {
+  text-align: center;
+}
 /* ======================================================================= */
 /* HOME PAGE */
 /* ======================================================================= */
@@ -46,22 +65,26 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-.menu-main {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 2rem;
-  grid-gap: 1rem;
-}
+  h2 {
+    margin-top: 1rem;
+  }
 
-.menu-secondary {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 1rem;
-  grid-gap: 1rem;
+  .menu-main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 2rem;
+    grid-gap: 1rem;
+  }
+
+  .menu-secondary {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 1rem 0 2rem 0;
+    grid-gap: 1rem;
+  }
 }
 
 .menu-item {
@@ -138,34 +161,36 @@ img {
 /*                      SHOP PAGE */
 /* ======================================================================= */
 .collection {
-  display: flex;
+  display: grid;
   flex-direction: column;
-  margin-bottom: 2rem;
 
   .title {
     font-size: 28px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-main);
+    text-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2);
   }
 
   .preview {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
   }
 }
 
 .collection-item {
-  width: 22%;
+  width: 100%;
+  height: 350px;
   display: flex;
   flex-direction: column;
-  height: 350px;
-  align-items: center;
 
   .item-image {
     width: 100%;
     height: 95%;
     background-size: cover;
     background-position: center;
-    margin-bottom: 5px;
+    margin-bottom: 0.4rem;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   }
 
   .item-footer {
@@ -173,15 +198,17 @@ img {
     height: 5%;
     display: flex;
     justify-content: space-between;
-    font-size: 18px;
+    font-size: 1.1rem;
 
     .item-name {
-      width: 90%;
-      margin-bottom: 15px;
+      margin-bottom: 1rem;
+      color: #000;
+      margin-left: 0.5rem;
     }
 
     .item-price {
-      width: 10%;
+      color: #000;
+      margin-right: 0.5rem;
     }
   }
 }
