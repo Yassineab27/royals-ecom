@@ -1,7 +1,7 @@
 import React from "react";
 
-import MenuMain from "../Home-menu/MenuMain";
-import MenuSec from "../Home-menu/MenuSec";
+import MenuMain from "../home-menu/MenuMain";
+import MenuSec from "../home-menu/MenuSec";
 
 const Home = () => {
   return (

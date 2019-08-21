@@ -15,9 +15,9 @@ class MenuSec extends React.Component {
         },
         {
           id: 4,
-          title: "Shirts",
+          title: "Jackets",
           imgUrl:
-            "https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg"
+            "https://images.pexels.com/photos/1336873/pexels-photo-1336873.jpeg"
         },
         {
           id: 5,
