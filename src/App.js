@@ -9,11 +9,13 @@ import Pants from "./components/Pants";
 import Shirts from "./components/Shirts";
 import Shoes from "./components/Shoes";
 import Hats from "./components/Hats";
+import NavBar from "./components/NavBar";
 import "./App.scss";
 
 function App() {
   return (
     <BrowserRouter>
+      <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/shop" component={ShopPage} />
