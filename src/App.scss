@@ -140,16 +140,14 @@ input[type="text"] {
     align-items: center;
     padding: 0 0.5rem;
 
-    li {
-      margin-right: 2rem;
-    }
-
     .cart {
       color: $color-main;
     }
 
     .option {
       font-size: 1.15rem;
+      margin-right: 2rem;
+      cursor: pointer;
 
       &:hover {
         border-bottom: $color-main 2.5px dotted;
@@ -187,6 +185,17 @@ input[type="text"] {
       color: $color-grey;
       text-align: center;
       margin: 1rem 0;
+    }
+
+    .btn-google {
+      background: #ea4335;
+      border: 1px solid #ea4335;
+
+      &:hover {
+        background-color: $color-light;
+        color: #ea4335;
+        border: 1px solid #ea4335;
+      }
     }
   }
 }

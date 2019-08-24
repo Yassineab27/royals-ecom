@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { signInWithGoogle } from "../../firebase/firebase.utils";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,8 +28,10 @@ const Login = () => {
           onChange={e => setPassword(e.target.value)}
         />
         <button className="btn btn-block">Sign in</button>
-        <button className="btn btn-block">Sign in with google</button>
       </form>
+      <button onClick={signInWithGoogle} className="btn btn-block btn-google">
+        Sign in with Google
+      </button>
     </div>
   );
 };

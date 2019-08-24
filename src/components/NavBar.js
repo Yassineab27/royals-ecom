@@ -1,8 +1,9 @@
 import React from "react";
+import { auth } from "../firebase/firebase.utils";
 
 import { Link, NavLink } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ currentUser }) => {
   return (
     <nav className="navbar">
       <h2 className="large">
@@ -35,9 +36,26 @@ const NavBar = () => {
             to="/cart"
             activeClassName="active-option"
           >
-            <i className="fas fa-cart-arrow-down fa-lg" />
+            <i className="fas fa-shopping-basket fa-lg"></i>
           </NavLink>
         </li>
+        {currentUser ? (
+          <li onClick={() => auth.signOut()}>
+            <NavLink className="option" to="/" activeClassName="active-option">
+              <i className="fas fa-door-open fa-lg"></i>
+            </NavLink>
+          </li>
+        ) : (
+          <li>
+            <NavLink
+              className="option"
+              to="/auth"
+              activeClassName="active-option"
+            >
+              <i className="fas fa-sign-in-alt fa-lg"></i>
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );
