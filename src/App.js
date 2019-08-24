@@ -10,22 +10,26 @@ import Shirts from "./components/Shirts";
 import Shoes from "./components/Shoes";
 import Hats from "./components/Hats";
 import NavBar from "./components/NavBar";
+import Auth from "./components/auth/Auth";
 import "./App.scss";
 
 function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/shop" component={ShopPage} />
-        <Route path="/mens" component={Mens} />
-        <Route path="/womens" component={Womens} />
-        <Route path="/pants" component={Pants} />
-        <Route path="/shirts" component={Shirts} />
-        <Route path="/shoes" component={Shoes} />
-        <Route exact path="/hats" component={Hats} />
-      </Switch>
+      <div className="container">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/auth" component={Auth} />
+          <Route path="/shop" component={ShopPage} />
+          <Route path="/mens" component={Mens} />
+          <Route path="/womens" component={Womens} />
+          <Route path="/pants" component={Pants} />
+          <Route path="/shirts" component={Shirts} />
+          <Route path="/shoes" component={Shoes} />
+          <Route path="/hats" component={Hats} />
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }

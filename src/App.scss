@@ -1,12 +1,21 @@
-:root {
-  --color-main: #d6ba1c;
-  --color-dark: #343a40;
-  --color-light: #f4f4f4;
-  --color-grey: #ccc;
-  --color-danger: #dc3545;
-  --color-success: #28a745;
-}
+// :root {
+//   --color-main: #d6ba1c;
+//   --color-dark: #343a40;
+//   --color-light: #f4f4f4;
+//   --color-grey: #ccc;
+//   --color-danger: #dc3545;
+//   --color-success: #28a745;
+// }
 
+// VARIABLES
+$color-main: #d6ba1c;
+$color-dark: #343a40;
+$color-light: #f4f4f4;
+$color-grey: #ccc;
+$color-danger: #dc3545;
+$color-success: #28a745;
+
+// GENERAL CSS
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,7 +31,7 @@ body {
 }
 
 a {
-  color: var(--color-dark);
+  color: $color-dark;
   text-decoration: none;
 }
 
@@ -44,7 +53,7 @@ img {
   height: 2px;
   width: 45px;
   margin: auto;
-  background: var(--color-main);
+  background: $color-main;
   margin-bottom: 0.5rem;
 }
 
@@ -52,7 +61,7 @@ img {
   height: 1px;
   width: 70%;
   margin: 3.5rem auto 2rem auto;
-  background: var(--color-main);
+  background: $color-main;
 }
 
 .text-center {
@@ -60,7 +69,51 @@ img {
 }
 
 .large {
-  font-size: 2rem;
+  font-size: 2.5rem;
+}
+
+.text {
+  font-size: 1.1rem;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  font-size: 1.1rem;
+  padding: 10px 10px 10px 5px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid $color-grey;
+  margin: 1.5rem 0;
+  outline: none;
+}
+
+.btn {
+  background-color: $color-main;
+  color: $color-light;
+  border: 1px solid $color-main;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0.5rem 0 0;
+  font-family: "Open Sans Condensed";
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-light;
+    color: $color-main;
+    border: 1px solid $color-main;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-block {
+  width: 100%;
 }
 
 /* ======================================================================= */
@@ -70,7 +123,7 @@ img {
   display: flex;
   justify-content: space-between;
   padding: 1.5rem;
-  background: var(--color-light);
+  background: $color-light;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -79,7 +132,7 @@ img {
   opacity: 0.975;
 
   .logo {
-    color: var(--color-main);
+    color: $color-main;
   }
 
   .options {
@@ -92,20 +145,48 @@ img {
     }
 
     .cart {
-      color: var(--color-main);
+      color: $color-main;
     }
 
     .option {
       font-size: 1.15rem;
 
       &:hover {
-        border-bottom: var(--color-main) 2.5px dotted;
+        border-bottom: $color-main 2.5px dotted;
         padding-bottom: 0.5rem;
       }
     }
 
     .active-option {
       font-weight: bold;
+    }
+  }
+}
+
+/* ======================================================================= */
+/* AUTHENTICATION */
+/* ======================================================================= */
+.auth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+
+  .login {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-size: 2.5rem;
+      color: $color-dark;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: $color-grey;
+      text-align: center;
+      margin: 1rem 0;
     }
   }
 }
@@ -181,10 +262,10 @@ img {
     padding: 0 25px;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--color-dark);
+    border: 1px solid $color-dark;
     position: absolute;
 
-    background: var(--color-main);
+    background: $color-main;
     opacity: 0.8;
 
     .title {
@@ -220,7 +301,7 @@ img {
   .title {
     font-size: 28px;
     margin-bottom: 1rem;
-    color: var(--color-main);
+    color: $color-main;
     text-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2);
   }
 
