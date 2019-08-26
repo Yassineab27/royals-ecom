@@ -20,7 +20,6 @@ const Register = () => {
         email,
         password
       );
-      console.log(user);
       await createUserDoc(user, { displayName });
 
       setDisplayName("");

@@ -1,16 +1,30 @@
 import React, { useState } from "react";
 
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+
+      setEmail("");
+      setPassword("");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <div className="login">
       <h2>Login</h2>
       <div className="small-underline"></div>
       <p>Please login with your email and password</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
