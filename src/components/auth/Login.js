@@ -10,9 +10,8 @@ const Login = () => {
       <h2>Login</h2>
       <div className="small-underline"></div>
       <p>Please login with your email and password</p>
-      <form className="login-form">
+      <form>
         <input
-          className="auth-input"
           type="email"
           name="email"
           value={email}
@@ -20,7 +19,6 @@ const Login = () => {
           onChange={e => setEmail(e.target.value)}
         />
         <input
-          className="auth-input"
           type="password"
           name="password"
           value={password}

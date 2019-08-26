@@ -52,7 +52,7 @@ img {
 .small-underline {
   height: 2px;
   width: 45px;
-  margin: auto;
+  margin: 0 auto;
   background: $color-main;
   margin-bottom: 0.5rem;
 }
@@ -86,6 +86,11 @@ input[type="text"] {
   border-bottom: 2px solid $color-grey;
   margin: 1.5rem 0;
   outline: none;
+
+  &:focus {
+    border: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.205);
+  }
 }
 
 .btn {
@@ -167,9 +172,10 @@ input[type="text"] {
 .auth {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
+  grid-gap: 4rem;
 
-  .login {
+  .login,
+  .register {
     padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
