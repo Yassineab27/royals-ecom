@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-
+import { withRouter } from "react-router-dom";
 import { auth, createUserDoc } from "../../firebase/firebase.utils";
 
-const Register = () => {
+const Register = props => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,10 +23,7 @@ const Register = () => {
       // console.log(user);
       await createUserDoc(user, { displayName });
 
-      setDisplayName("");
-      setEmail("");
-      setPassword("");
-      setPassword2("");
+      props.history.push("/");
     } catch (err) {
       console.log(err.message);
     }
@@ -79,4 +76,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default withRouter(Register);

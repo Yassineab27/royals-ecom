@@ -31,6 +31,24 @@ const NavBar = props => {
             CONTACT
           </NavLink>
         </li>
+
+        {props.currentUser ? (
+          <li onClick={() => auth.signOut()}>
+            <Link className="option" to="/">
+              SIGN OUT
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <NavLink
+              className="option"
+              to="/auth"
+              activeClassName="active-option"
+            >
+              LOGIN
+            </NavLink>
+          </li>
+        )}
         <li>
           <NavLink
             className="option cart"
@@ -40,23 +58,6 @@ const NavBar = props => {
             <i className="fas fa-shopping-basket fa-lg"></i>
           </NavLink>
         </li>
-        {props.currentUser ? (
-          <li onClick={() => auth.signOut()}>
-            <NavLink className="option" to="/" activeClassName="active-option">
-              <i className="fas fa-door-open fa-lg"></i>
-            </NavLink>
-          </li>
-        ) : (
-          <li>
-            <NavLink
-              className="option"
-              to="/auth"
-              activeClassName="active-option"
-            >
-              <i className="fas fa-sign-in-alt fa-lg"></i>
-            </NavLink>
-          </li>
-        )}
       </ul>
     </nav>
   );

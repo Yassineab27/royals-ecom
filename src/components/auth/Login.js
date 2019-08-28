@@ -15,11 +15,10 @@ const Login = props => {
 
       setEmail("");
       setPassword("");
+      props.history.push("/");
     } catch (err) {
       console.log(err.message);
     }
-
-    props.history.push("/");
   };
 
   return (
