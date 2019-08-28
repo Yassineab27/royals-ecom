@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { auth, createUserDoc } from "./firebase/firebase.utils";
+import { connect } from "react-redux";
+import { setCurrentUser } from "./actions";
 
 import ShopPage from "./components/shop/ShopPage";
 import Home from "./components/pages/Home";
@@ -11,21 +13,15 @@ import Pants from "./components/Pants";
 import Shirts from "./components/Shirts";
 import Shoes from "./components/Shoes";
 import Hats from "./components/Hats";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/layout/NavBar";
 import Auth from "./components/auth/Auth";
 import "./App.scss";
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      currentUser: null
-    };
-  }
-
   unsubFromAuth = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props;
     this.unsubFromAuth = auth.onAuthStateChanged(async user => {
       console.log(user);
       if (user) {
@@ -33,18 +29,14 @@ class App extends React.Component {
 
         userRef.onSnapshot(document => {
           // console.log(document);
-          this.setState(
-            {
-              currentUser: {
-                id: document.id,
-                ...document.data()
-              }
-            },
-            () => console.log(this.state)
-          );
+          const user = {
+            id: document.id,
+            ...document.data()
+          };
+          setCurrentUser(user);
         });
       } else {
-        this.setState({ currentUser: null });
+        setCurrentUser(null);
       }
     });
   }
@@ -56,7 +48,7 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <NavBar currentUser={this.state.currentUser} />
+        <NavBar />
         <div className="container">
           <Switch>
             <Route exact path="/" component={Home} />
@@ -75,4 +67,11 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { currentUser: state.user.currentUser };
+};
+
+export default connect(
+  mapStateToProps,
+  { setCurrentUser }
+)(App);

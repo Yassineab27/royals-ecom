@@ -1,9 +1,10 @@
 import React from "react";
-import { auth } from "../firebase/firebase.utils";
+import { connect } from "react-redux";
 
 import { Link, NavLink } from "react-router-dom";
+import { auth } from "../../firebase/firebase.utils";
 
-const NavBar = ({ currentUser }) => {
+const NavBar = props => {
   return (
     <nav className="navbar">
       <h2 className="large">
@@ -39,7 +40,7 @@ const NavBar = ({ currentUser }) => {
             <i className="fas fa-shopping-basket fa-lg"></i>
           </NavLink>
         </li>
-        {currentUser ? (
+        {props.currentUser ? (
           <li onClick={() => auth.signOut()}>
             <NavLink className="option" to="/" activeClassName="active-option">
               <i className="fas fa-door-open fa-lg"></i>
@@ -61,4 +62,8 @@ const NavBar = ({ currentUser }) => {
   );
 };
 
-export default NavBar;
+const mapStateToProps = state => {
+  return { currentUser: state.user.currentUser };
+};
+
+export default connect(mapStateToProps)(NavBar);

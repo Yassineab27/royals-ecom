@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 
 import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
 
-const Login = () => {
+const Login = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,6 +18,8 @@ const Login = () => {
     } catch (err) {
       console.log(err.message);
     }
+
+    props.history.push("/");
   };
 
   return (
@@ -39,6 +42,7 @@ const Login = () => {
           placeholder="Password"
           onChange={e => setPassword(e.target.value)}
         />
+
         <button className="btn btn-block">Sign in</button>
       </form>
       <button onClick={signInWithGoogle} className="btn btn-block btn-google">
@@ -48,4 +52,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);
