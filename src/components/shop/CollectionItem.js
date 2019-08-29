@@ -1,5 +1,8 @@
 import React from "react";
 
+import { connect } from "react-redux";
+import { addItem } from "../../actions";
+
 const CollectionItem = props => {
   const { name, imageUrl, price } = props.item;
   return (
@@ -12,8 +15,17 @@ const CollectionItem = props => {
         <span className="item-name">{name}</span>
         <span className="item-price">$ {price}</span>
       </div>
+      <button
+        onClick={() => props.addItem(props.item)}
+        className="btn btn-invert btn-block"
+      >
+        Add to cart
+      </button>
     </div>
   );
 };
 
-export default CollectionItem;
+export default connect(
+  null,
+  { addItem }
+)(CollectionItem);

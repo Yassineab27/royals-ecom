@@ -5,3 +5,7 @@ export const setCurrentUser = user => {
 export const toggleCartDropdown = () => {
   return { type: "TOGGLE_CART_DROPDOWN" };
 };
+
+export const addItem = item => {
+  return { type: "ADD_ITEM", payload: item };
+};

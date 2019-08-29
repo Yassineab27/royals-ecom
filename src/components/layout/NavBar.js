@@ -55,7 +55,7 @@ const NavBar = props => {
           )}
           <li onClick={props.toggleCartDropdown} className="option cart">
             <i className="fas fa-shopping-basket fa-lg" />{" "}
-            <span className="item-count">0</span>
+            <span className="item-count">{props.cartItems.length}</span>
           </li>
         </ul>
         {props.cartHidden ? null : <CartDropdown />}
@@ -65,7 +65,11 @@ const NavBar = props => {
 };
 
 const mapStateToProps = ({ user, cart }) => {
-  return { currentUser: user.currentUser, cartHidden: cart.cartHidden };
+  return {
+    currentUser: user.currentUser,
+    cartHidden: cart.cartHidden,
+    cartItems: cart.cartItems
+  };
 };
 
 export default connect(

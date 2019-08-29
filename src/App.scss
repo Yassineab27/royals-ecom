@@ -117,6 +117,20 @@ input[type="text"] {
   }
 }
 
+.btn-invert {
+  background-color: $color-light;
+  color: $color-main;
+  border: 1px solid $color-main;
+  position: absolute;
+  opacity: 0.85;
+  display: none;
+
+  &:hover {
+    background-color: $color-main;
+    color: $color-light;
+  }
+}
+
 .btn-block {
   width: 100%;
 }
@@ -153,6 +167,7 @@ input[type="text"] {
         color: $color-light;
         padding: 0 0.3rem;
         border-radius: 1rem;
+        font-size: 1rem;
       }
     }
 
@@ -360,6 +375,7 @@ input[type="text"] {
   height: 350px;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   .item-image {
     width: 100%;
@@ -386,6 +402,16 @@ input[type="text"] {
     .item-price {
       color: #000;
       margin-right: 0.5rem;
+    }
+  }
+
+  &:hover {
+    .btn-invert {
+      display: block;
+    }
+
+    .item-image {
+      opacity: 0.7;
     }
   }
 }
