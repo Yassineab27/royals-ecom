@@ -55,7 +55,9 @@ const NavBar = props => {
           )}
           <li onClick={props.toggleCartDropdown} className="option cart">
             <i className="fas fa-shopping-basket fa-lg" />{" "}
-            <span className="item-count">{props.cartItems.length}</span>
+            {props.cartItems.length ? (
+              <span className="item-count">{props.cartItems.length}</span>
+            ) : null}
           </li>
         </ul>
         {props.cartHidden ? null : <CartDropdown />}

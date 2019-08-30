@@ -206,6 +206,31 @@ input[type="text"] {
     display: flex;
     flex-direction: column;
     overflow: scroll;
+
+    .item {
+      display: flex;
+      margin-bottom: 0.8rem;
+
+      img {
+        width: 35%;
+      }
+
+      .item-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 1rem;
+
+        p {
+          line-height: 1.2;
+        }
+
+        .item-price {
+          margin-top: 0.5rem;
+          color: $color-grey;
+        }
+      }
+    }
   }
 }
 
