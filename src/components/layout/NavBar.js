@@ -6,6 +6,10 @@ import { auth } from "../../firebase/firebase.utils";
 
 import CartDropdown from "../layout/CartDropdown";
 import { toggleCartDropdown } from "../../actions";
+import {
+  selectCartItemsCount,
+  selectCartHidden
+} from "../selectors/cartSelectors";
 
 const NavBar = props => {
   return (
@@ -55,8 +59,8 @@ const NavBar = props => {
           )}
           <li onClick={props.toggleCartDropdown} className="option cart">
             <i className="fas fa-shopping-basket fa-lg" />{" "}
-            {props.cartItems.length ? (
-              <span className="item-count">{props.cartItems.length}</span>
+            {props.cartCount ? (
+              <span className="item-count">{props.cartCount}</span>
             ) : null}
           </li>
         </ul>
@@ -66,11 +70,11 @@ const NavBar = props => {
   );
 };
 
-const mapStateToProps = ({ user, cart }) => {
+const mapStateToProps = state => {
   return {
-    currentUser: user.currentUser,
-    cartHidden: cart.cartHidden,
-    cartItems: cart.cartItems
+    currentUser: state.user.currentUser,
+    cartHidden: selectCartHidden(state),
+    cartCount: selectCartItemsCount(state)
   };
 };
 
