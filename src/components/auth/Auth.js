@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 
 import Login from "./Login";
 import Register from "./Register";
+import { selectCurrentUser } from "../selectors/userSelectors";
 
 const Auth = props => {
   if (props.currentUser) {
@@ -19,7 +20,7 @@ const Auth = props => {
 };
 
 const mapStateToProps = state => {
-  return { currentUser: state.user.currentUser };
+  return { currentUser: selectCurrentUser(state) };
 };
 
 export default connect(mapStateToProps)(Auth);

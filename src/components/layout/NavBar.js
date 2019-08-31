@@ -10,6 +10,7 @@ import {
   selectCartItemsCount,
   selectCartHidden
 } from "../selectors/cartSelectors";
+import { selectCurrentUser } from "../selectors/userSelectors";
 
 const NavBar = props => {
   return (
@@ -72,7 +73,7 @@ const NavBar = props => {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.user.currentUser,
+    currentUser: selectCurrentUser(state),
     cartHidden: selectCartHidden(state),
     cartCount: selectCartItemsCount(state)
   };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import CartItem from "./CartItem";
@@ -16,7 +17,9 @@ const CartDropdown = ({ cartItems }) => {
           <p className="text">Your cart is empty...</p>
         )}
       </div>
-      <button className="btn">Go to Check out</button>
+      <Link className="btn text-center" to="/checkout">
+        Go to Check out
+      </Link>
     </div>
   );
 };

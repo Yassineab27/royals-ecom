@@ -15,6 +15,7 @@ import Shoes from "./components/Shoes";
 import Hats from "./components/Hats";
 import NavBar from "./components/layout/NavBar";
 import Auth from "./components/auth/Auth";
+import Checkout from "./components/pages/Checkout";
 import "./App.scss";
 
 class App extends React.Component {
@@ -60,6 +61,7 @@ class App extends React.Component {
             <Route path="/shirts" component={Shirts} />
             <Route path="/shoes" component={Shoes} />
             <Route path="/hats" component={Hats} />
+            <Route path="/checkout" component={Checkout} />
           </Switch>
         </div>
       </BrowserRouter>
@@ -67,11 +69,7 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { currentUser: state.user.currentUser };
-};
-
 export default connect(
-  mapStateToProps,
+  null,
   { setCurrentUser }
 )(App);
