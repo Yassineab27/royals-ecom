@@ -7,6 +7,13 @@ const INITIAL_STATE = {
 
 const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "DELETE_ITEM":
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          cartItem => cartItem.id !== action.payload
+        )
+      };
     case "ADD_ITEM":
       return {
         ...state,

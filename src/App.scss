@@ -135,6 +135,18 @@ input[type="text"] {
   width: 100%;
 }
 
+.color-main {
+  color: $color-main;
+}
+
+.color-light {
+  color: $color-light;
+}
+
+.color-grey {
+  color: $color-grey;
+}
+
 /* ======================================================================= */
 /* NAVBAR */
 /* ======================================================================= */
@@ -332,6 +344,7 @@ input[type="text"] {
 
     .delete-button {
       padding-left: 0.7rem;
+      color: $color-main;
       cursor: pointer;
     }
   }
