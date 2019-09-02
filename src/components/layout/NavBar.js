@@ -13,6 +13,7 @@ import {
 import { selectCurrentUser } from "../selectors/userSelectors";
 
 const NavBar = props => {
+  // console.log("2");
   return (
     <React.Fragment>
       <nav className="navbar">
@@ -72,6 +73,7 @@ const NavBar = props => {
 };
 
 const mapStateToProps = state => {
+  // console.log("1");
   return {
     currentUser: selectCurrentUser(state),
     cartHidden: selectCartHidden(state),

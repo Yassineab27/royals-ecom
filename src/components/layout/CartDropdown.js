@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 
 import CartItem from "./CartItem";
 import { selectCartItems } from "../selectors/cartSelectors";
+import { toggleCartDropdown } from "../../actions";
 
-const CartDropdown = ({ cartItems }) => {
+const CartDropdown = ({ cartItems, toggleCartDropdown }) => {
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
@@ -17,7 +18,11 @@ const CartDropdown = ({ cartItems }) => {
           <p className="text">Your cart is empty...</p>
         )}
       </div>
-      <Link className="btn text-center" to="/checkout">
+      <Link
+        className="btn text-center"
+        to="/checkout"
+        onClick={toggleCartDropdown}
+      >
         Go to Check out
       </Link>
     </div>
@@ -28,4 +33,7 @@ const mapStateToProps = state => {
   return { cartItems: selectCartItems(state) };
 };
 
-export default connect(mapStateToProps)(CartDropdown);
+export default connect(
+  mapStateToProps,
+  { toggleCartDropdown }
+)(CartDropdown);
