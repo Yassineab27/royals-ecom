@@ -7,6 +7,19 @@ const INITIAL_STATE = {
 
 const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "REMOVE_QUANTITY":
+      return {
+        ...state,
+        cartItems: state.cartItems.map(cartItem => {
+          if (cartItem.id === action.payload) {
+            return cartItem.quantity > 1
+              ? { ...cartItem, quantity: cartItem.quantity - 1 }
+              : { ...cartItem, quantity: 1 };
+          }
+
+          return cartItem;
+        })
+      };
     case "DELETE_ITEM":
       return {
         ...state,

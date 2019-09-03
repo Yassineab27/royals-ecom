@@ -1,7 +1,7 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { deleteItem } from "../../actions";
+import { deleteItem, addItem, removeQuantity } from "../../actions";
 
 const CheckoutItem = props => {
   const { name, imageUrl, quantity, price, id } = props.cartItem;
@@ -22,8 +22,17 @@ const CheckoutItem = props => {
       </div>
       <div className="name">{name}</div>
       <div className="quantity">
-        <i className="fas fa-less-than color-main"></i> {quantity}{" "}
-        <i className="fas fa-greater-than color-main"></i>
+        <i
+          style={{ cursor: "pointer" }}
+          onClick={() => props.removeQuantity(id)}
+          className="fas fa-less-than color-main"
+        ></i>{" "}
+        {quantity}{" "}
+        <i
+          style={{ cursor: "pointer" }}
+          onClick={() => props.addItem(props.cartItem)}
+          className="fas fa-greater-than color-main"
+        ></i>
       </div>
       <div className="price">${price}</div>
       <div onClick={() => onDeleteItem(id)} className="delete-button">
@@ -35,5 +44,5 @@ const CheckoutItem = props => {
 
 export default connect(
   null,
-  { deleteItem }
+  { deleteItem, addItem, removeQuantity }
 )(CheckoutItem);
