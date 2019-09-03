@@ -60,7 +60,7 @@ img {
 .big-underline {
   height: 1px;
   width: 70%;
-  margin: 3.5rem auto 2rem auto;
+  margin: 3rem auto 2rem auto;
   background: $color-main;
 }
 
@@ -467,6 +467,11 @@ input[type="text"] {
     margin-bottom: 1rem;
     color: $color-main;
     text-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn {
+    align-self: center;
+    margin-top: 1.4rem;
   }
 
   .preview {
