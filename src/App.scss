@@ -76,6 +76,7 @@ img {
   font-size: 1.1rem;
 }
 
+// INPUT
 input[type="email"],
 input[type="password"],
 input[type="text"] {
@@ -93,6 +94,7 @@ input[type="text"] {
   }
 }
 
+// BUTTON
 .btn {
   background-color: $color-main;
   color: $color-light;
@@ -135,6 +137,7 @@ input[type="text"] {
   width: 100%;
 }
 
+// COLORS
 .color-main {
   color: $color-main;
 }
@@ -145,6 +148,19 @@ input[type="text"] {
 
 .color-grey {
   color: $color-grey;
+}
+
+// MARGIN VERTICAL
+.my-1 {
+  margin: 1rem 0;
+}
+
+.my-2 {
+  margin: 2rem 0;
+}
+
+.my-3 {
+  margin: 3rem 0;
 }
 
 /* ======================================================================= */
@@ -487,6 +503,7 @@ input[type="text"] {
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 0.5rem;
 
   .item-image {
     width: 100%;
@@ -506,8 +523,9 @@ input[type="text"] {
 
     .item-name {
       margin-bottom: 1rem;
-      color: #000;
+      color: $color-main;
       margin-left: 0.5rem;
+      font-weight: bold;
     }
 
     .item-price {

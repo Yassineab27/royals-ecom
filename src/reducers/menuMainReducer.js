@@ -5,14 +5,16 @@ const INITIAL_STATE = {
       title: "Mens",
       imgUrl:
         "https://cdn.pixabay.com/photo/2017/11/02/14/26/model-2911330_960_720.jpg",
-      size: "large-img"
+      size: "large-img",
+      routeName: "mens"
     },
     {
       id: 2,
       title: "Womens",
       imgUrl:
         "https://cdn.pixabay.com/photo/2018/03/01/14/57/portrait-3190849_960_720.jpg",
-      size: "large-img"
+      size: "large-img",
+      routeName: "womens"
     }
   ]
 };

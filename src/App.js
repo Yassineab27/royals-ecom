@@ -7,7 +7,7 @@ import { setCurrentUser } from "./actions";
 
 import ShopPage from "./components/shop/ShopPage";
 import Home from "./components/pages/Home";
-import CategoryPage from "./components/pages/CategoryPage";
+import CollectionPage from "./components/pages/CollectionPage";
 import NavBar from "./components/layout/NavBar";
 import Auth from "./components/auth/Auth";
 import Checkout from "./components/pages/Checkout";
@@ -50,7 +50,7 @@ class App extends React.Component {
             <Route exact path="/" component={Home} />
             <Route path="/auth" component={Auth} />
             <Route exact path="/shop" component={ShopPage} />
-            <Route path="/shop/:category" component={CategoryPage} />
+            <Route path="/shop/:collection" component={CollectionPage} />
             <Route path="/checkout" component={Checkout} />
           </Switch>
         </div>
