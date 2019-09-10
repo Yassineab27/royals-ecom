@@ -17,3 +17,8 @@ export const deleteItem = itemId => {
 export const removeQuantity = itemId => {
   return { type: "REMOVE_QUANTITY", payload: itemId };
 };
+
+// SHOP
+export const getCollections = collections => {
+  return { type: "GET_COLLECTIONS", payload: collections };
+};

@@ -7,14 +7,12 @@ export const selectCollections = createSelector(
   shopData => shopData.collections
 );
 
-export const selectCollectionOverview = createSelector(
-  [selectCollections],
-  collections => Object.values(collections)
-);
-
 export const selectCollection = collectionUrlParams => {
   return createSelector(
     [selectCollections],
-    collections => collections[collectionUrlParams]
+    collections =>
+      collections.find(
+        collection => collection.routeName === collectionUrlParams
+      )
   );
 };
