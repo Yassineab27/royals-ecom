@@ -1,3 +1,5 @@
+import { firestore, shopCollections } from "../firebase/firebase.utils";
+
 export const setCurrentUser = user => {
   return { type: "SET_CURRENT_USER", payload: user };
 };
@@ -19,6 +21,33 @@ export const removeQuantity = itemId => {
 };
 
 // SHOP
-export const getCollections = collections => {
-  return { type: "GET_COLLECTIONS", payload: collections };
+export const getCollections = () => {
+  return dispatch => {
+    const collectionRef = firestore.collection("collections");
+    collectionRef
+      .get()
+      .then(collectionsSnapshot => {
+        // snapshot is an obj that has info about the collection its listening to
+        const collections = shopCollections(collectionsSnapshot);
+        dispatch({ type: "GET_COLLECTIONS", payload: collections });
+      })
+      .catch(err => dispatch({ type: "SET_SHOP_ERROR", payload: err.message }));
+  };
+};
+
+export const getCurrentCollection = collectionParam => {
+  return dispatch => {
+    const collectionRef = firestore.collection("collections");
+    collectionRef
+      .get()
+      .then(collectionsSnapshot => {
+        // snapshot is an obj that has info about the collection its listening to
+        const collections = shopCollections(collectionsSnapshot);
+        const collection = collections.find(
+          collection => collection.routeName === collectionParam
+        );
+        dispatch({ type: "GET_CURRENT_COLLECTION", payload: collection });
+      })
+      .catch(err => dispatch({ type: "SET_SHOP_ERROR", payload: err.message }));
+  };
 };

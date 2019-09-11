@@ -2,17 +2,22 @@ import { createSelector } from "reselect";
 
 const selectShopData = state => state.shopData;
 
-export const selectCollections = createSelector(
+// SELECT COLLECTIONS
+export const getCollections = createSelector(
   [selectShopData],
   shopData => shopData.collections
 );
+export const selectCollections = createSelector(
+  [getCollections],
+  collections => collections
+);
 
-export const selectCollection = collectionUrlParams => {
-  return createSelector(
-    [selectCollections],
-    collections =>
-      collections.find(
-        collection => collection.routeName === collectionUrlParams
-      )
-  );
-};
+// SELECT COLLECTION
+export const getCurrentCollection = createSelector(
+  [selectShopData],
+  shopData => shopData.currentCollection
+);
+export const selectCollection = createSelector(
+  [getCurrentCollection],
+  currentCollection => currentCollection
+);

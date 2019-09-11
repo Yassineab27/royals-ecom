@@ -14,20 +14,21 @@ import Checkout from "./components/pages/Checkout";
 import "./App.scss";
 
 class App extends React.Component {
-  unsubFromAuth = null;
+  unsubscribeFromAuth = null;
 
   componentDidMount() {
     const { setCurrentUser } = this.props;
-    this.unsubFromAuth = auth.onAuthStateChanged(async user => {
+    // subscription connects to the observables
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
       console.log(user);
       if (user) {
         const userRef = await createUserDoc(user);
 
-        userRef.onSnapshot(document => {
+        userRef.get().then(documentSnapshot => {
           // console.log(document);
           const user = {
-            id: document.id,
-            ...document.data()
+            id: documentSnapshot.id,
+            ...documentSnapshot.data()
           };
           setCurrentUser(user);
         });
@@ -38,7 +39,7 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
-    this.unsubFromAuth();
+    this.unsubscribeFromAuth();
   }
 
   render() {
