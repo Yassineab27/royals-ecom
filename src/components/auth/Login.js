@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { setUserError } from "../../actions";
+import { setAlert } from "../../actions";
 
 import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
 
@@ -16,7 +16,7 @@ const Login = props => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => props.history.push("/"))
-      .catch(err => props.setUserError(err.message));
+      .catch(err => props.setAlert(err.message, "danger"));
     setEmail("");
     setPassword("");
   };
@@ -54,6 +54,6 @@ const Login = props => {
 export default withRouter(
   connect(
     null,
-    { setUserError }
+    { setAlert }
   )(Login)
 );

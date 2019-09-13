@@ -76,6 +76,26 @@ img {
   font-size: 1.1rem;
 }
 
+// ALERT
+.alert {
+  height: 3rem;
+  width: 70%;
+  margin: 0.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-light;
+  border-radius: 0.8rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.alert-danger {
+  background: $color-danger;
+}
+.alert-success {
+  background: $color-success;
+}
+
 // INPUT
 input[type="email"],
 input[type="password"],

@@ -1,7 +1,6 @@
 const INITIAL_STATE = {
   collections: null,
-  currentCollection: null,
-  error: null
+  currentCollection: null
 };
 
 const shopReducer = (state = INITIAL_STATE, action) => {

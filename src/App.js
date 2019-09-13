@@ -11,6 +11,7 @@ import CollectionPage from "./components/pages/CollectionPage";
 import NavBar from "./components/layout/NavBar";
 import Auth from "./components/auth/Auth";
 import Checkout from "./components/pages/Checkout";
+import Alert from "./components/layout/Alert";
 import "./App.scss";
 
 class App extends React.Component {
@@ -46,6 +47,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <NavBar />
+        <Alert />
         <div className="container">
           <Switch>
             <Route exact path="/" component={Home} />

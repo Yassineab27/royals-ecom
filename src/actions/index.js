@@ -5,10 +5,6 @@ export const setCurrentUser = user => {
   return { type: "SET_CURRENT_USER", payload: user };
 };
 
-export const setUserError = errorMessage => {
-  return { type: "SET_USER_ERROR", payload: errorMessage };
-};
-
 // CART
 export const toggleCartDropdown = () => {
   return { type: "TOGGLE_CART_DROPDOWN" };
@@ -37,7 +33,7 @@ export const getCollections = () => {
         const collections = shopCollections(collectionsSnapshot);
         dispatch({ type: "GET_COLLECTIONS", payload: collections });
       })
-      .catch(err => dispatch({ type: "SET_SHOP_ERROR", payload: err.message }));
+      .catch(err => dispatch(setAlert(err.message, "danger")));
   };
 };
 
@@ -55,6 +51,15 @@ export const getCurrentCollection = collectionParam => {
         );
         dispatch({ type: "GET_CURRENT_COLLECTION", payload: collection });
       })
-      .catch(err => dispatch({ type: "SET_SHOP_ERROR", payload: err.message }));
+      .catch(err => dispatch(setAlert(err.message, "danger")));
   };
+};
+
+// ALERT
+export const setAlert = (alert, color) => {
+  return { type: "SET_ALERT", payload: { msg: alert, type: color } };
+};
+
+export const removeAlert = () => {
+  return { type: "REMOVE_ALERT" };
 };
