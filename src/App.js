@@ -18,7 +18,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const { setCurrentUser } = this.props;
-    // subscription connects to the observables
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
       console.log(user);
       if (user) {

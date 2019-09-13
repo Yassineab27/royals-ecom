@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 
+import { connect } from "react-redux";
+import { setUserError } from "../../actions";
+
 import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
 
 const Login = props => {
@@ -10,15 +13,12 @@ const Login = props => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-
-      setEmail("");
-      setPassword("");
-      props.history.push("/");
-    } catch (err) {
-      console.log(err.message);
-    }
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => props.history.push("/"))
+      .catch(err => props.setUserError(err.message));
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -51,4 +51,9 @@ const Login = props => {
   );
 };
 
-export default withRouter(Login);
+export default withRouter(
+  connect(
+    null,
+    { setUserError }
+  )(Login)
+);

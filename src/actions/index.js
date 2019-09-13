@@ -1,9 +1,15 @@
 import { firestore, shopCollections } from "../firebase/firebase.utils";
 
+// USER
 export const setCurrentUser = user => {
   return { type: "SET_CURRENT_USER", payload: user };
 };
 
+export const setUserError = errorMessage => {
+  return { type: "SET_USER_ERROR", payload: errorMessage };
+};
+
+// CART
 export const toggleCartDropdown = () => {
   return { type: "TOGGLE_CART_DROPDOWN" };
 };
@@ -37,6 +43,7 @@ export const getCollections = () => {
 
 export const getCurrentCollection = collectionParam => {
   return dispatch => {
+    dispatch({ type: "RESET_COLLECTION_STATE" });
     const collectionRef = firestore.collection("collections");
     collectionRef
       .get()

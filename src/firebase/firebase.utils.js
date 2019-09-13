@@ -45,19 +45,6 @@ export const createUserDoc = async (userAuth, additionalData) => {
   return userRef;
 };
 
-// ADD NEW COLLECTIONS TO FIRESTORE
-// export const addCollectionAndDoc = async (collectionName, collections) => {
-//   const collectionRef = firestore.collection(collectionName);
-//   const batch = firestore.batch();
-
-//   collections.forEach(collection => {
-//     const newDocRef = collectionRef.doc();
-//     batch.set(newDocRef, collection);
-//   });
-
-//   return await batch.commit();
-// };
-
 export const shopCollections = snapshot => {
   return snapshot.docs.map(doc => {
     const { title, items, routeName } = doc.data();

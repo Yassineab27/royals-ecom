@@ -6,6 +6,11 @@ const INITIAL_STATE = {
 
 const shopReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "RESET_COLLECTION_STATE":
+      return {
+        ...state,
+        currentCollection: null
+      };
     case "SET_SHOP_ERROR":
       return { ...state, error: action.payload };
     case "GET_CURRENT_COLLECTION":
