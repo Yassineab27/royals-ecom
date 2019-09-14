@@ -1,43 +1,40 @@
 {
-  "name": "royal",
-  "version": "0.1.0",
+  "name": "royals",
+  "version": "1.0.0",
   "engines": {
-    "node": "10.16.0"
+    "node": "10.16.0",
+    "npm": "6.9.0"
   },
-  "private": true,
-  "dependencies": {
-    "axios": "^0.19.0",
-    "firebase": "^6.4.2",
-    "node-sass": "^4.12.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-redux": "^7.1.1",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
-    "react-stripe-checkout": "^2.6.3",
-    "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
-  },
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yassineab27/royals-ecom.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yassineab27/royals-ecom/issues"
+  },
+  "homepage": "https://github.com/Yassineab27/royals-ecom#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-history-api-fallback": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.1",
+    "stripe": "^7.9.0",
+    "validator": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
   }
 }
