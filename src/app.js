@@ -5,8 +5,16 @@ const cors = require("cors");
 const history = require("connect-history-api-fallback");
 require("dotenv").config();
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const connectDB = require("../db");
+
+const authRouter = require("./routes/auth");
+const paymentRouter = require("./routes/payment");
+const collectionsRouter = require("./routes/collections");
+
 const app = express();
+
+// connect to MongoDB
+connectDB();
 
 app.use(cors());
 app.use(history());
@@ -15,21 +23,10 @@ app.use(history());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/payment", (req, res) => {
-  const body = {
-    source: req.body.token.id,
-    amount: req.body.priceForStripe,
-    currency: "usd"
-  };
-
-  stripe.charges.create(body, (stripeErr, stripeRes) => {
-    if (stripeErr) {
-      res.status(500).send({ error: stripeErr });
-    } else {
-      res.send({ success: stripeRes });
-    }
-  });
-});
+// Mounting routes
+app.use("/auth", authRouter);
+app.use("/collections", collectionsRouter);
+app.use("/payment", paymentRouter);
 
 // Serve Static file in prod
 if (process.env.NODE_ENV === "production") {
