@@ -8,8 +8,8 @@ require("dotenv").config();
 const connectDB = require("../db");
 
 const authRouter = require("./routes/auth");
-const paymentRouter = require("./routes/payment");
 const collectionsRouter = require("./routes/collections");
+const paymentRouter = require("./routes/payment");
 
 const app = express();
 
@@ -21,9 +21,16 @@ app.use(history());
 
 // Parse incoming data
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // Mounting routes
+app.post("/", (req, res) => {
+  res.send("POST request");
+});
+
+app.get("/user", (req, res) => {
+  res.send("GET reqest");
+});
 app.use("/auth", authRouter);
 app.use("/collections", collectionsRouter);
 app.use("/payment", paymentRouter);
