@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 
-import { auth, createUserDoc } from "./firebase/firebase.utils";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./actions";
+import history from "./history";
 
 import ShopPage from "./components/shop/ShopPage";
 import Home from "./components/pages/Home";
@@ -15,37 +15,9 @@ import Alert from "./components/layout/Alert";
 import "./App.scss";
 
 class App extends React.Component {
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
-    const { setCurrentUser } = this.props;
-
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-      console.log(user);
-      if (user) {
-        const userRef = await createUserDoc(user);
-
-        userRef.get().then(documentSnapshot => {
-          // console.log(document);
-          const user = {
-            id: documentSnapshot.id,
-            ...documentSnapshot.data()
-          };
-          setCurrentUser(user);
-        });
-      } else {
-        setCurrentUser(null);
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <NavBar />
         <Alert />
         <div className="container">
@@ -57,7 +29,7 @@ class App extends React.Component {
             <Route path="/checkout" component={Checkout} />
           </Switch>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

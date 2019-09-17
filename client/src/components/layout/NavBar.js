@@ -2,10 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { Link, NavLink } from "react-router-dom";
-import { auth } from "../../firebase/firebase.utils";
 
 import CartDropdown from "../layout/CartDropdown";
-import { toggleCartDropdown } from "../../actions";
+import { toggleCartDropdown, logoutUser } from "../../actions";
 import {
   selectCartItemsCount,
   selectCartHidden
@@ -43,7 +42,7 @@ const NavBar = props => {
           </li>
 
           {props.currentUser ? (
-            <li onClick={() => auth.signOut()}>
+            <li onClick={() => props.logoutUser()}>
               <Link className="option" to="/">
                 SIGN OUT
               </Link>
@@ -83,5 +82,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleCartDropdown }
+  { toggleCartDropdown, logoutUser }
 )(NavBar);

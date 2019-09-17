@@ -1,14 +1,22 @@
 import React from "react";
 
 import { connect } from "react-redux";
+import { setAlert } from "../../actions";
+import { Redirect } from "react-router-dom";
 import {
   selectCartItems,
   selectCartTotalPrice
 } from "../selectors/cartSelectors";
+import { selectCurrentUser } from "../selectors/userSelectors";
 import StripeButton from "../stripe/StripeButton";
 import CheckoutItem from "./CheckoutItem";
 
-const Checkout = ({ cartItems, totalPrice }) => {
+const Checkout = ({ cartItems, totalPrice, currentUser, setAlert }) => {
+  if (!currentUser) {
+    setAlert("You need to Login before accessing the Checkout page.", "danger");
+    return <Redirect to="/auth" />;
+  }
+
   return (
     <div className="checkout">
       <div className="checkout-header">
@@ -51,8 +59,12 @@ const Checkout = ({ cartItems, totalPrice }) => {
 const mapStateToProps = state => {
   return {
     cartItems: selectCartItems(state),
-    totalPrice: selectCartTotalPrice(state)
+    totalPrice: selectCartTotalPrice(state),
+    currentUser: selectCurrentUser(state)
   };
 };
 
-export default connect(mapStateToProps)(Checkout);
+export default connect(
+  mapStateToProps,
+  { setAlert }
+)(Checkout);

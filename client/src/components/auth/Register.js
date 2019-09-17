@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import { auth, createUserDoc } from "../../firebase/firebase.utils";
+import { connect } from "react-redux";
+import { registerUser } from "../../actions";
 
 const Register = props => {
-  const [displayName, setDisplayName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
@@ -16,14 +17,14 @@ const Register = props => {
     }
 
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
+      const user = {
+        name,
         email,
         password
-      );
-      // console.log(user);
-      await createUserDoc(user, { displayName });
+      };
+      console.log(user);
 
-      props.history.push("/");
+      props.registerUser(user);
     } catch (err) {
       console.log(err.message);
     }
@@ -38,10 +39,10 @@ const Register = props => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="displayName"
-          value={displayName}
+          name="name"
+          value={name}
           placeholder="Name"
-          onChange={e => setDisplayName(e.target.value)}
+          onChange={e => setName(e.target.value)}
           required
         />
         <input
@@ -76,4 +77,7 @@ const Register = props => {
   );
 };
 
-export default withRouter(Register);
+export default connect(
+  null,
+  { registerUser }
+)(withRouter(Register));

@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { setAlert } from "../../actions";
-
-import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
+import { loginUser } from "../../actions";
 
 const Login = props => {
   const [email, setEmail] = useState("");
@@ -13,10 +11,12 @@ const Login = props => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then(() => props.history.push("/"))
-      .catch(err => props.setAlert(err.message, "danger"));
+    const user = {
+      email,
+      password
+    };
+    props.loginUser(user);
+
     setEmail("");
     setPassword("");
   };
@@ -44,9 +44,6 @@ const Login = props => {
 
         <button className="btn btn-block">Sign in</button>
       </form>
-      <button onClick={signInWithGoogle} className="btn btn-block btn-google">
-        Sign in with Google
-      </button>
     </div>
   );
 };
@@ -54,6 +51,6 @@ const Login = props => {
 export default withRouter(
   connect(
     null,
-    { setAlert }
+    { loginUser }
   )(Login)
 );

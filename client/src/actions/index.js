@@ -1,4 +1,40 @@
 import { firestore, shopCollections } from "../firebase/firebase.utils";
+import axios from "axios";
+import history from "../history";
+
+// AUTH
+export const registerUser = user => {
+  return async dispatch => {
+    try {
+      const response = await axios.post("/auth/register", user);
+      dispatch(setCurrentUser(response.data));
+      localStorage.setItem("user", JSON.stringify(response.data));
+      history.push("/");
+      dispatch(setAlert("You were registered successfully", "success"));
+    } catch (err) {
+      dispatch(setAlert(err.response.data.error, "danger"));
+    }
+  };
+};
+
+export const loginUser = user => {
+  return async dispatch => {
+    try {
+      const response = await axios.post("/auth/login", user);
+      localStorage.setItem("user", JSON.stringify(response.data));
+      dispatch(setCurrentUser(response.data));
+      dispatch(setAlert("You were Logged in successfully", "success"));
+    } catch (err) {
+      dispatch(setAlert(err.response.data.error, "danger"));
+    }
+  };
+};
+
+export const logoutUser = () => {
+  localStorage.clear();
+  history.push("/shop");
+  return { type: "SET_CURRENT_USER", payload: null };
+};
 
 // USER
 export const setCurrentUser = user => {

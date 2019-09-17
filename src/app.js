@@ -24,13 +24,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Mounting routes
-app.post("/", (req, res) => {
-  res.send("POST request");
-});
-
-app.get("/user", (req, res) => {
-  res.send("GET reqest");
-});
 app.use("/auth", authRouter);
 app.use("/collections", collectionsRouter);
 app.use("/payment", paymentRouter);

@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
     if (!collections) {
       return res.status(404).send({ error: "Collections not found." });
     }
-    // console.log("collections");
+
     res.send(collections);
   } catch (err) {
     res.status(500).send(err.message);
