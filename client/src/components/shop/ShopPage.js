@@ -8,8 +8,6 @@ import Collection from "./Collection";
 import Loader from "../layout/Loader";
 
 class ShopPage extends Component {
-  unsubFromSnapshot = null;
-
   componentDidMount() {
     console.log("ShopPage component did mount");
     this.props.getCollections();
@@ -26,7 +24,7 @@ class ShopPage extends Component {
         <h1 className="text-center">Collections</h1>
         <div className="small-underline" />
         {collections.map(collection => (
-          <Collection key={collection.id} collection={collection} />
+          <Collection key={collection._id} collection={collection} />
         ))}
       </div>
     );

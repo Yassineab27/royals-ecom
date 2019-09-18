@@ -1,4 +1,3 @@
-import { firestore, shopCollections } from "../firebase/firebase.utils";
 import axios from "axios";
 import history from "../history";
 
@@ -60,34 +59,25 @@ export const removeQuantity = itemId => {
 
 // SHOP
 export const getCollections = () => {
-  return dispatch => {
-    const collectionRef = firestore.collection("collections");
-    collectionRef
-      .get()
-      .then(collectionsSnapshot => {
-        // snapshot is an obj that has info about the collection its listening to
-        const collections = shopCollections(collectionsSnapshot);
-        dispatch({ type: "GET_COLLECTIONS", payload: collections });
-      })
-      .catch(err => dispatch(setAlert(err.message, "danger")));
+  return async dispatch => {
+    try {
+      const response = await axios.get("/collections");
+      dispatch({ type: "GET_COLLECTIONS", payload: response.data });
+    } catch (err) {
+      dispatch(setAlert(err.message.data.error, "danger"));
+    }
   };
 };
 
-export const getCurrentCollection = collectionParam => {
-  return dispatch => {
-    dispatch({ type: "RESET_COLLECTION_STATE" });
-    const collectionRef = firestore.collection("collections");
-    collectionRef
-      .get()
-      .then(collectionsSnapshot => {
-        // snapshot is an obj that has info about the collection its listening to
-        const collections = shopCollections(collectionsSnapshot);
-        const collection = collections.find(
-          collection => collection.routeName === collectionParam
-        );
-        dispatch({ type: "GET_CURRENT_COLLECTION", payload: collection });
-      })
-      .catch(err => dispatch(setAlert(err.message, "danger")));
+export const getCurrentCollection = collectionId => {
+  return async dispatch => {
+    try {
+      dispatch({ type: "GET_CURRENT_COLLECTION", payload: null });
+      const response = await axios.get(`/collections/${collectionId}`);
+      dispatch({ type: "GET_CURRENT_COLLECTION", payload: response.data });
+    } catch (err) {
+      dispatch(setAlert(err.response.data.error, "danger"));
+    }
   };
 };
 

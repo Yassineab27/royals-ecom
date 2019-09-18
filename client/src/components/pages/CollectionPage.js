@@ -9,7 +9,7 @@ import Loader from "../layout/Loader";
 class CollectionPage extends Component {
   componentDidMount() {
     const { getCurrentCollection, match } = this.props;
-    getCurrentCollection(match.params.collection);
+    getCurrentCollection(match.params.collectionId);
   }
 
   render() {

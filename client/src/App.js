@@ -11,6 +11,7 @@ import CollectionPage from "./components/pages/CollectionPage";
 import NavBar from "./components/layout/NavBar";
 import Auth from "./components/auth/Auth";
 import Checkout from "./components/pages/Checkout";
+import Contact from "./components/pages/Contact";
 import Alert from "./components/layout/Alert";
 import "./App.scss";
 
@@ -23,9 +24,10 @@ class App extends React.Component {
         <div className="container">
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route path="/contact" component={Contact} />
             <Route path="/auth" component={Auth} />
             <Route exact path="/shop" component={ShopPage} />
-            <Route path="/shop/:collection" component={CollectionPage} />
+            <Route path="/shop/:collectionId" component={CollectionPage} />
             <Route path="/checkout" component={Checkout} />
           </Switch>
         </div>

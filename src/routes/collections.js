@@ -3,15 +3,15 @@ const Collection = require("../models/collection");
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
-  try {
-    const collection = new Collection(req.body);
-    await collection.save();
-    res.send(collection);
-  } catch (err) {
-    res.send(err.message);
-  }
-});
+// router.post("/", async (req, res) => {
+//   try {
+//     const collection = new Collection(req.body);
+//     await collection.save();
+//     res.send(collection);
+//   } catch (err) {
+//     res.send(err.message);
+//   }
+// });
 
 router.get("/", async (req, res) => {
   try {
