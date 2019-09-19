@@ -1,18 +1,19 @@
 import React from "react";
 
 import { connect } from "react-redux";
+import { selectCurrentUser } from "../selectors/userSelectors";
 import { deleteItem, addItem, removeQuantity } from "../../actions";
 
 const CheckoutItem = props => {
   const { name, imageUrl, quantity, price, id } = props.cartItem;
 
-  const onDeleteItem = id => {
+  const onDeleteItem = (userId, itemId) => {
     const confirm = window.confirm(
       "Are you sure you want to remove this item ??"
     );
 
     if (confirm) {
-      return props.deleteItem(id);
+      return props.deleteItem(userId, itemId);
     }
   };
   return (
@@ -24,25 +25,32 @@ const CheckoutItem = props => {
       <div className="quantity">
         <i
           style={{ cursor: "pointer" }}
-          onClick={() => props.removeQuantity(id)}
+          onClick={() => props.removeQuantity(props.currentUser._id, id)}
           className="fas fa-less-than color-main"
         ></i>{" "}
         {quantity}{" "}
         <i
           style={{ cursor: "pointer" }}
-          onClick={() => props.addItem(props.cartItem)}
+          onClick={() => props.addItem(props.currentUser._id, props.cartItem)}
           className="fas fa-greater-than color-main"
         ></i>
       </div>
       <div className="price">${price}</div>
-      <div onClick={() => onDeleteItem(id)} className="delete-button">
+      <div
+        onClick={() => onDeleteItem(props.currentUser._id, id)}
+        className="delete-button"
+      >
         &#10005;
       </div>
     </div>
   );
 };
 
+const mapStateToProps = state => {
+  return { currentUser: selectCurrentUser(state) };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { deleteItem, addItem, removeQuantity }
 )(CheckoutItem);

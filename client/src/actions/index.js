@@ -40,21 +40,50 @@ export const setCurrentUser = user => {
   return { type: "SET_CURRENT_USER", payload: user };
 };
 
+export const addItem = (userId, item) => {
+  return async dispatch => {
+    try {
+      const response = await axios.patch(`/users/${userId}/addItem`, item);
+      localStorage.setItem("user", JSON.stringify(response.data));
+      dispatch(setCurrentUser(response.data));
+    } catch (err) {
+      dispatch(setAlert(err.response.data.error, "danger"));
+    }
+  };
+};
+
+export const deleteItem = (userId, itemId) => {
+  return async dispatch => {
+    try {
+      const response = await axios.patch(
+        `/users/${userId}/deleteItem/${itemId}`
+      );
+      localStorage.setItem("user", JSON.stringify(response.data));
+      dispatch(setCurrentUser(response.data));
+      dispatch(setAlert("Item Removed Successfully", "success"));
+    } catch (err) {
+      dispatch(setAlert(err.response.data.error, "danger"));
+    }
+  };
+};
+
+export const removeQuantity = (userId, itemId) => {
+  return async dispatch => {
+    try {
+      const response = await axios.patch(
+        `/users/${userId}/removeQuantity/${itemId}`
+      );
+      localStorage.setItem("user", JSON.parse(response.data));
+      dispatch(setCurrentUser(response.data));
+    } catch (err) {
+      dispatch(setAlert(err.response.data.error, "danger"));
+    }
+  };
+};
+
 // CART
 export const toggleCartDropdown = () => {
   return { type: "TOGGLE_CART_DROPDOWN" };
-};
-
-export const addItem = item => {
-  return { type: "ADD_ITEM", payload: item };
-};
-
-export const deleteItem = itemId => {
-  return { type: "DELETE_ITEM", payload: itemId };
-};
-
-export const removeQuantity = itemId => {
-  return { type: "REMOVE_QUANTITY", payload: itemId };
 };
 
 // SHOP

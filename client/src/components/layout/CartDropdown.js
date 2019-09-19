@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import CartItem from "./CartItem";
-import { selectCartItems } from "../selectors/cartSelectors";
+import { selectCartItems } from "../selectors/userSelectors";
 import { toggleCartDropdown } from "../../actions";
 
 const CartDropdown = ({ cartItems, toggleCartDropdown }) => {

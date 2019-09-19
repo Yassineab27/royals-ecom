@@ -5,11 +5,11 @@ import { Link, NavLink } from "react-router-dom";
 
 import CartDropdown from "../layout/CartDropdown";
 import { toggleCartDropdown, logoutUser } from "../../actions";
+import { selectCartHidden } from "../selectors/cartSelectors";
 import {
-  selectCartItemsCount,
-  selectCartHidden
-} from "../selectors/cartSelectors";
-import { selectCurrentUser } from "../selectors/userSelectors";
+  selectCurrentUser,
+  selectItemsCount
+} from "../selectors/userSelectors";
 
 const NavBar = props => {
   // console.log("2");
@@ -76,7 +76,7 @@ const mapStateToProps = state => {
   return {
     currentUser: selectCurrentUser(state),
     cartHidden: selectCartHidden(state),
-    cartCount: selectCartItemsCount(state)
+    cartCount: selectItemsCount(state)
   };
 };
 

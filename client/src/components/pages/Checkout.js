@@ -3,11 +3,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions";
 import { Redirect } from "react-router-dom";
+
 import {
+  selectCurrentUser,
   selectCartItems,
-  selectCartTotalPrice
-} from "../selectors/cartSelectors";
-import { selectCurrentUser } from "../selectors/userSelectors";
+  selectItemsTotalPrice
+} from "../selectors/userSelectors";
 import StripeButton from "../stripe/StripeButton";
 import CheckoutItem from "./CheckoutItem";
 
@@ -57,9 +58,10 @@ const Checkout = ({ cartItems, totalPrice, currentUser, setAlert }) => {
 };
 
 const mapStateToProps = state => {
+  console.log("Checkout Page State");
   return {
     cartItems: selectCartItems(state),
-    totalPrice: selectCartTotalPrice(state),
+    totalPrice: selectItemsTotalPrice(state),
     currentUser: selectCurrentUser(state)
   };
 };

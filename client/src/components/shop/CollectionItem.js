@@ -2,9 +2,18 @@ import React from "react";
 
 import { connect } from "react-redux";
 import { addItem } from "../../actions";
+import { selectCurrentUser } from "../selectors/userSelectors";
 
 const CollectionItem = props => {
+  const handleAddItem = item => {
+    if (!props.currentUser) {
+      return alert("Please Login first.");
+    }
+    props.addItem(props.currentUser._id, item);
+  };
+
   const { name, imageUrl, price } = props.item;
+
   return (
     <div className="collection-item">
       <div
@@ -16,7 +25,7 @@ const CollectionItem = props => {
         <span className="item-price">$ {price}</span>
       </div>
       <button
-        onClick={() => props.addItem(props.item)}
+        onClick={() => handleAddItem(props.item)}
         className="btn btn-invert btn-block"
       >
         Add to cart
@@ -25,7 +34,11 @@ const CollectionItem = props => {
   );
 };
 
+const mapStateToProps = state => {
+  return { currentUser: selectCurrentUser(state) };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { addItem }
 )(CollectionItem);

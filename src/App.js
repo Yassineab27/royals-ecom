@@ -10,6 +10,7 @@ const connectDB = require("../db");
 const authRouter = require("./routes/auth");
 const collectionsRouter = require("./routes/collections");
 const paymentRouter = require("./routes/payment");
+const usersRouter = require("./routes/users");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 // Mounting routes
 app.use("/auth", authRouter);
 app.use("/collections", collectionsRouter);
+app.use("/users", usersRouter);
 app.use("/payment", paymentRouter);
 
 // Serve Static file in prod

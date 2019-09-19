@@ -32,6 +32,7 @@ class ShopPage extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("Shop component State");
   return { collections: selectCollections(state) };
 };
 
