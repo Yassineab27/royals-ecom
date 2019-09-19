@@ -3,7 +3,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const router = express.Router();
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const body = {
     source: req.body.token.id,
     amount: req.body.priceForStripe,

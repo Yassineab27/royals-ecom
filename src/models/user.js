@@ -23,6 +23,10 @@ const userSchema = new Schema({
   items: {
     type: Array,
     required: true
+  },
+  boughtProducts: {
+    type: Array,
+    required: true
   }
 });
 

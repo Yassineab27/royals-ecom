@@ -73,7 +73,7 @@ export const removeQuantity = (userId, itemId) => {
       const response = await axios.patch(
         `/users/${userId}/removeQuantity/${itemId}`
       );
-      localStorage.setItem("user", JSON.parse(response.data));
+      localStorage.setItem("user", JSON.stringify(response.data));
       dispatch(setCurrentUser(response.data));
     } catch (err) {
       dispatch(setAlert(err.response.data.error, "danger"));
@@ -117,4 +117,33 @@ export const setAlert = (alert, color) => {
 
 export const removeAlert = () => {
   return { type: "REMOVE_ALERT" };
+};
+
+// STRIPE
+export const StripeOnToken = (token, priceForStripe) => {
+  try {
+    axios.post("/payment", { token, priceForStripe });
+    history.push("/checkout/confirmation");
+  } catch (err) {
+    setAlert(
+      "An Issue has occured. Please make sure your credit card is valid.",
+      "danger"
+    );
+  }
+};
+
+// CHECKOUT CONFIRMATION
+export const userCheckoutConfirmation = userId => {
+  return async dispatch => {
+    try {
+      const response = await axios.patch(
+        `/users/${userId}/checkoutConfirmation`
+      );
+      localStorage.setItem("user", JSON.stringify(response.data));
+      dispatch(setCurrentUser(response.data));
+      dispatch(setAlert("Your payment was successful", "success"));
+    } catch (err) {
+      dispatch(setAlert(err.response.data.error, "danger"));
+    }
+  };
 };

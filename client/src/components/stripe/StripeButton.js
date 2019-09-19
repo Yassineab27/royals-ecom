@@ -1,26 +1,11 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
-import axios from "axios";
-
 import { connect } from "react-redux";
-import { setAlert } from "../../actions";
+import { StripeOnToken } from "../../actions";
 
-const StripeButton = ({ price, setAlert }) => {
+const StripeButton = ({ price, currentUser }) => {
   const priceForStripe = price * 100;
   const key = "pk_test_bRhI9yGJdqQkPz4GfrYmKnyo00bfKijxix";
-
-  const onToken = token => {
-    try {
-      console.log(token);
-      axios.post("/payment", { token, priceForStripe });
-      setAlert("Payment Successful!", "success");
-    } catch (err) {
-      setAlert(
-        "An Issue has occured. Please make sure your credit card is valid.",
-        "danger"
-      );
-    }
-  };
 
   return (
     <StripeCheckout
@@ -32,12 +17,12 @@ const StripeButton = ({ price, setAlert }) => {
       shippingAddress
       amount={priceForStripe}
       stripeKey={key}
-      token={onToken}
+      token={token => StripeOnToken(token, priceForStripe)}
     />
   );
 };
 
 export default connect(
   null,
-  { setAlert }
+  { StripeOnToken }
 )(StripeButton);

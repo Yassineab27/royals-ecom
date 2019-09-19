@@ -51,11 +51,22 @@ router.patch("/:userId/removeQuantity/:itemId", async (req, res) => {
     });
 
     await user.save();
-    console.log(user);
     res.send(user);
-    console.log(user);
   } catch (err) {
     res.status(500).send({ error: err.message });
+  }
+});
+
+router.patch("/:userId/checkoutConfirmation", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    user.boughtProducts = [...user.items];
+    user.items = [];
+
+    await user.save();
+    res.send(user);
+  } catch (err) {
+    res.status(500).send(err.message);
   }
 });
 

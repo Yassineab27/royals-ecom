@@ -11,6 +11,7 @@ import CollectionPage from "./components/pages/CollectionPage";
 import NavBar from "./components/layout/NavBar";
 import Auth from "./components/auth/Auth";
 import Checkout from "./components/pages/Checkout";
+import CheckoutConfirmation from "./components/pages/CheckoutConfirmation";
 import Contact from "./components/pages/Contact";
 import Alert from "./components/layout/Alert";
 import "./App.scss";
@@ -28,7 +29,11 @@ class App extends React.Component {
             <Route path="/auth" component={Auth} />
             <Route exact path="/shop" component={ShopPage} />
             <Route path="/shop/:collectionId" component={CollectionPage} />
-            <Route path="/checkout" component={Checkout} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route
+              path="/checkout/confirmation"
+              component={CheckoutConfirmation}
+            />
           </Switch>
         </div>
       </Router>
