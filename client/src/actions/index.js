@@ -141,7 +141,6 @@ export const userCheckoutConfirmation = userId => {
       );
       localStorage.setItem("user", JSON.stringify(response.data));
       dispatch(setCurrentUser(response.data));
-      dispatch(setAlert("Your payment was successful", "success"));
     } catch (err) {
       dispatch(setAlert(err.response.data.error, "danger"));
     }

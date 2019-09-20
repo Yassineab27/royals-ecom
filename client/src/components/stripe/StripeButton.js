@@ -3,7 +3,7 @@ import StripeCheckout from "react-stripe-checkout";
 import { connect } from "react-redux";
 import { StripeOnToken } from "../../actions";
 
-const StripeButton = ({ price, currentUser }) => {
+const StripeButton = ({ price }) => {
   const priceForStripe = price * 100;
   const key = "pk_test_bRhI9yGJdqQkPz4GfrYmKnyo00bfKijxix";
 

@@ -99,13 +99,14 @@ img {
 // INPUT
 input[type="email"],
 input[type="password"],
-input[type="text"] {
+input[type="text"],
+textarea {
   font-size: 1.1rem;
   padding: 10px 10px 10px 5px;
   width: 100%;
   border: none;
   border-bottom: 2px solid $color-grey;
-  margin: 1.5rem 0;
+  margin: 1.25rem 0;
   outline: none;
 
   &:focus {
@@ -162,6 +163,10 @@ input[type="text"] {
   color: $color-main;
 }
 
+.color-success {
+  color: $color-success;
+}
+
 .color-light {
   color: $color-light;
 }
@@ -181,6 +186,10 @@ input[type="text"] {
 
 .my-3 {
   margin: 3rem 0;
+}
+
+.m-top {
+  margin-top: 1rem;
 }
 
 // SPINNER
@@ -574,5 +583,20 @@ input[type="text"] {
     .item-image {
       opacity: 0.7;
     }
+  }
+}
+
+// CHECKOUT CONFIRMATION
+.confirmation-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    color: $color-danger;
   }
 }
