@@ -33,7 +33,7 @@ const Contact = props => {
       <p className="color-grey text-center">
         or call us directly:{" "}
         <span className="color-main">
-          <i class="fas fa-phone-volume"></i> +7 1254 3659 47
+          <i className="fas fa-phone-volume"></i> +7 1254 3659 47
         </span>
       </p>
       <p className="text-center color-success my-1">

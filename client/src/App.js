@@ -7,6 +7,7 @@ import history from "./history";
 
 import ShopPage from "./components/shop/ShopPage";
 import Home from "./components/pages/Home";
+
 import CollectionPage from "./components/pages/CollectionPage";
 import NavBar from "./components/layout/NavBar";
 import Auth from "./components/auth/Auth";

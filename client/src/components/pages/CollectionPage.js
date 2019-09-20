@@ -4,6 +4,7 @@ import { getCurrentCollection } from "../../actions";
 
 import { selectCollection } from "../selectors/shopDataSelectors";
 import CollectionItem from "../shop/CollectionItem";
+import Footer from "../layout/Footer";
 import Loader from "../layout/Loader";
 
 class CollectionPage extends Component {
@@ -29,6 +30,7 @@ class CollectionPage extends Component {
             <CollectionItem key={item.id} item={item} />
           ))}
         </div>
+        <Footer />
       </div>
     );
   }

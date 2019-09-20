@@ -60,7 +60,7 @@ router.patch("/:userId/removeQuantity/:itemId", async (req, res) => {
 router.patch("/:userId/checkoutConfirmation", async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
-    user.boughtProducts = [...user.items];
+    user.boughtProducts = [...user.boughtProducts, ...user.items];
     user.items = [];
 
     await user.save();
