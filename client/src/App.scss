@@ -635,3 +635,83 @@ textarea {
     }
   }
 }
+
+// RESPONSIVE STYLE
+@media (max-width: 850px) {
+  // SHOP PAGE
+  .collection {
+    .preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  // SHOP PAGE
+  .collection {
+    .preview {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  // NAVBAR
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+
+    .logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .options {
+      margin-bottom: 0.5rem;
+    }
+  }
+  // SHOP PAGE
+  .collection {
+    .preview {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 1rem;
+    }
+    .item-footer {
+      margin-bottom: 1rem;
+      .item-name {
+        margin-left: 2rem;
+      }
+
+      .item-price {
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  // AUTH
+  .auth {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 4rem;
+  }
+
+  // HOMEPAGE
+  .homepage {
+    .home-hero {
+      display: hidden;
+    }
+
+    .menu-main {
+      grid-template-columns: 1fr;
+    }
+
+    .menu-secondary {
+      grid-template-columns: 1fr;
+    }
+  }
+}

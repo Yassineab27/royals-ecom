@@ -6,9 +6,9 @@ import Footer from "../layout/Footer";
 
 const Home = () => {
   return (
-    <div className="homepage container">
+    <div className="homepage">
       <div className="home-hero"></div>
-      <h1>Be Royal in your Own Fashion</h1>
+      <h1 className="text-center">Be Royal in your Own Fashion</h1>
       <h2 className="text-center">Choose Your Style.</h2>
       <div className="small-underline" />
       <MenuMain />
