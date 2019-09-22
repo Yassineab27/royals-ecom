@@ -714,4 +714,19 @@ textarea {
       grid-template-columns: 1fr;
     }
   }
+
+  // CHECKOUT
+  .checkout-item {
+    .price {
+      padding-left: 0.8rem;
+    }
+  }
+
+  // CONFIRMATION PAGE
+  .confirmation-info {
+    h4,
+    p {
+      padding: 0 2rem;
+    }
+  }
 }
