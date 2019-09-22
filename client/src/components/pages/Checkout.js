@@ -58,7 +58,6 @@ const Checkout = ({ cartItems, totalPrice, currentUser, setAlert }) => {
 };
 
 const mapStateToProps = state => {
-  console.log("Checkout Page State");
   return {
     cartItems: selectCartItems(state),
     totalPrice: selectItemsTotalPrice(state),

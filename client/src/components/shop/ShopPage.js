@@ -10,7 +10,6 @@ import Loader from "../layout/Loader";
 
 class ShopPage extends Component {
   componentDidMount() {
-    console.log("ShopPage component did mount");
     this.props.getCollections();
   }
 
