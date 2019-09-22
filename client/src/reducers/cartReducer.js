@@ -1,5 +1,3 @@
-import addItemsFilter from "../components/utils/addItemsFilter";
-
 const INITIAL_STATE = {
   cartHidden: true,
   cartItems: []
