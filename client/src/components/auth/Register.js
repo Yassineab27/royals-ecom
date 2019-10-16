@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions";
 
@@ -16,18 +15,14 @@ const Register = props => {
       return alert("Please make sure both passwords match!");
     }
 
-    try {
-      const user = {
-        name,
-        email,
-        password
-      };
-      console.log(user);
+    const user = {
+      name,
+      email,
+      password
+    };
+    console.log(user);
 
-      props.registerUser(user);
-    } catch (err) {
-      console.log(err.message);
-    }
+    props.registerUser(user);
   };
 
   return (
@@ -80,4 +75,4 @@ const Register = props => {
 export default connect(
   null,
   { registerUser }
-)(withRouter(Register));
+)(Register);

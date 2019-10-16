@@ -6,7 +6,7 @@ import MenuItem from "./MenuItem";
 
 const MenuMain = props => {
   const sections = props.sections.map(section => (
-    <MenuItem section={section} key={section.id} />
+    <MenuItem section={section} key={section._id} />
   ));
 
   return <div className="menu-main">{sections}</div>;

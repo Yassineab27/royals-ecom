@@ -6,8 +6,8 @@ export const registerUser = user => {
   return async dispatch => {
     try {
       const response = await axios.post("/auth/register", user);
-      dispatch(setCurrentUser(response.data));
       localStorage.setItem("user", JSON.stringify(response.data));
+      dispatch(setCurrentUser(response.data));
       history.push("/");
       dispatch(setAlert("You were registered successfully", "success"));
     } catch (err) {
@@ -22,6 +22,7 @@ export const loginUser = user => {
       const response = await axios.post("/auth/login", user);
       localStorage.setItem("user", JSON.stringify(response.data));
       dispatch(setCurrentUser(response.data));
+      history.push("/");
       dispatch(setAlert("You were Logged in successfully", "success"));
     } catch (err) {
       dispatch(setAlert(err.response.data.error, "danger"));

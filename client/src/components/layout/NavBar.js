@@ -1,9 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
-
 import { Link, NavLink } from "react-router-dom";
 
 import CartDropdown from "../layout/CartDropdown";
+import { connect } from "react-redux";
 import { toggleCartDropdown, logoutUser } from "../../actions";
 import { selectCartHidden } from "../selectors/cartSelectors";
 import {

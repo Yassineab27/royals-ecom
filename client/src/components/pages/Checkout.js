@@ -1,8 +1,8 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { setAlert } from "../../actions";
-import { Redirect } from "react-router-dom";
 
 import {
   selectCurrentUser,
@@ -59,9 +59,9 @@ const Checkout = ({ cartItems, totalPrice, currentUser, setAlert }) => {
 
 const mapStateToProps = state => {
   return {
+    currentUser: selectCurrentUser(state),
     cartItems: selectCartItems(state),
-    totalPrice: selectItemsTotalPrice(state),
-    currentUser: selectCurrentUser(state)
+    totalPrice: selectItemsTotalPrice(state)
   };
 };
 

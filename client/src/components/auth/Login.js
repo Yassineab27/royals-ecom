@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { loginUser } from "../../actions";
@@ -8,7 +7,7 @@ const Login = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     const user = {
@@ -33,6 +32,7 @@ const Login = props => {
           value={email}
           placeholder="Email"
           onChange={e => setEmail(e.target.value)}
+          required
         />
         <input
           type="password"
@@ -40,6 +40,7 @@ const Login = props => {
           value={password}
           placeholder="Password"
           onChange={e => setPassword(e.target.value)}
+          required
         />
 
         <button className="btn btn-block">Sign in</button>
@@ -48,9 +49,7 @@ const Login = props => {
   );
 };
 
-export default withRouter(
-  connect(
-    null,
-    { loginUser }
-  )(Login)
-);
+export default connect(
+  null,
+  { loginUser }
+)(Login);

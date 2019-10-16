@@ -1,8 +1,8 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { selectCurrentUser } from "../selectors/userSelectors";
 import { deleteItem, addItem, removeQuantity } from "../../actions";
+import { selectCurrentUser } from "../selectors/userSelectors";
 
 const CheckoutItem = props => {
   const { name, imageUrl, quantity, price, id } = props.cartItem;

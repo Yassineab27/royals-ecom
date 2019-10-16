@@ -1,6 +1,5 @@
 const INITIAL_STATE = {
-  cartHidden: true,
-  cartItems: []
+  cartHidden: true
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {

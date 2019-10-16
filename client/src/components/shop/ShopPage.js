@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-
 import { getCollections } from "../../actions";
+
 import { selectCollections } from "../selectors/shopDataSelectors";
 import Collection from "./Collection";
 import Footer from "../layout/Footer";
