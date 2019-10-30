@@ -1,8 +1,6 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
-import { connect } from "react-redux";
-import { setCurrentUser } from "./actions";
 import history from "./history";
 
 import ShopPage from "./components/shop/ShopPage";
@@ -15,6 +13,7 @@ import Checkout from "./components/pages/Checkout";
 import CheckoutConfirmation from "./components/pages/CheckoutConfirmation";
 import Contact from "./components/pages/Contact";
 import Alert from "./components/layout/Alert";
+import NotFoundPage from "./components/pages/NotFoundPage";
 import "./App.scss";
 
 class App extends React.Component {
@@ -35,6 +34,7 @@ class App extends React.Component {
               path="/checkout/confirmation"
               component={CheckoutConfirmation}
             />
+            <Route path="*" component={NotFoundPage} />
           </Switch>
         </div>
       </Router>
@@ -42,7 +42,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(
-  null,
-  { setCurrentUser }
-)(App);
+export default App;
